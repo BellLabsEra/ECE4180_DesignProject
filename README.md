@@ -2,7 +2,9 @@
 
 Repo for our final project in ECE 4180 for Fall 2023
 
-Team Members: Elio Zebinato, Christopher Semali, Mae Frank **Georgia Institute of Technology**
+Team Members: Elio Zebinato, Christopher Semali, Mae Frank
+
+**Georgia Institute of Technology**
 
 Watch our presentation and demo: Presentation: Demo: These are pictures of our smart alarm clock system device from different angles:
 
@@ -35,14 +37,15 @@ Our inertia pencil will be fulfilling the requirement of building a new Mbed har
 
 ## Schematic and Diagrams
 
-Here
+\*\*insert System Architecture and Software Flow diagrams\*\*
 
 ## Source Code
 
 ```
 #include "mbed.h"
+…
 ```
 
 ## Future Improvements
 
-For future improvement
+For future improvement…
