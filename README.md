@@ -2,7 +2,6 @@
 
 Repo of our final project in ECE 4180, for Fall 2023
 
-
 Team Members: Elio Zebinato, Christopher Semali, Mae Frank
 
 **Georgia Institute of Technology**
@@ -14,7 +13,6 @@ Presentation:
 Demo:
 
 These are images of our IMU Pencil breadboard:
-
 
 Table of Contents
 
@@ -34,16 +32,14 @@ Our inertia pencil will be fulfilling the requirement of building a new Mbed har
 
 ## Parts List
 
-
 -   1 mbed LPC1768 (<https://www.sparkfun.com/products/retired/9564>)
 -   1k Ohm Resistor (<https://www.sparkfun.com/products/14492>)
--   IMU (
--   H-Bridge
--   Barrel Jack
--   Brushed DC Motor
+-   1 Adafruit BNO055 IMU (<https://www.adafruit.com/product/2472>)
+-   H-Bridge (<https://www.sparkfun.com/products/14450>)
+-   1 DC Barrel Jack Adapter (<https://www.sparkfun.com/products/10811>)
+-   Brushed DC Motor (<https://www.sparkfun.com/products/13302>)
 -   2 Push Buttons (<https://www.sparkfun.com/products/97>)
 -   Jumper Wires (<https://www.sparkfun.com/products/12794>)
-
 
 ## Schematic and Diagrams
 
@@ -69,7 +65,5 @@ Unity Code
 
 For future improvement…
 
-
 -   Current = 2D drawing
 -   Future = 3D drawing
-
