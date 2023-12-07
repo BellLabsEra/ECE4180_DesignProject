@@ -1,20 +1,12 @@
-# ECE 4180 Final Design Project – IMU Pencil
+# ECE 4180 Final Design Project – IMU Inertia Pencil
 
-Repo of our final project in ECE 4180, for Fall 2023
-
+Repo for our final project in ECE 4180 for Fall 2023
 
 Team Members: Elio Zebinato, Christopher Semali, Mae Frank
 
 **Georgia Institute of Technology**
 
-Watch our presentation and demo:
-
-Presentation:
-
-Demo:
-
-These are images of our IMU Pencil breadboard:
-
+Watch our presentation and demo: Presentation: Demo: These are pictures of our smart alarm clock system device from different angles:
 
 Table of Contents
 
@@ -34,16 +26,14 @@ Our inertia pencil will be fulfilling the requirement of building a new Mbed har
 
 ## Parts List
 
-
--   1 mbed LPC1768 (<https://www.sparkfun.com/products/retired/9564>)
--   1k Ohm Resistor (<https://www.sparkfun.com/products/14492>)
--   IMU (
--   H-Bridge
--   Barrel Jack
+-   MBED LPC1768
+-   Resistors
+-   IMU
+-   Bluetooth
 -   Brushed DC Motor
--   2 Push Buttons (<https://www.sparkfun.com/products/97>)
--   Jumper Wires (<https://www.sparkfun.com/products/12794>)
-
+-   SD Card
+-   Push Buttons
+-   uLCD
 
 ## Schematic and Diagrams
 
@@ -51,15 +41,7 @@ Our inertia pencil will be fulfilling the requirement of building a new Mbed har
 
 ## Source Code
 
-Mbed Code
-
 ```
-#include "mbed.h"
-…
-```
-
-Unity Code
-
 #include "mbed.h"
 …
 ```
@@ -67,8 +49,3 @@ Unity Code
 ## Future Improvements
 
 For future improvement…
-
-
--   Current = 2D drawing
--   Future = 3D drawing
-
