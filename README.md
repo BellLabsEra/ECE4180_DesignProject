@@ -43,7 +43,7 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 -   Mbed LPC1768 (<https://www.sparkfun.com/products/retired/9564>)
 -   Adafruit BNO055 IMU (<https://www.adafruit.com/product/2472>)
 -   Transistor 2N3904 NPN (<https://www.sparkfun.com/products/521>)
--   Brushed DC Motor (<https://www.sparkfun.com/products/13302>)
+-   Haptic Motor (<https://media.digikey.com/pdf/Data%20Sheets/Seeed%20Technology/1020-15-003-001_Spec.pdf>)
 -   Diode Rectifier (<https://www.sparkfun.com/products/8589>)
 -   2 Push Buttons (<https://www.sparkfun.com/products/97>)
 -   Jumper Wires (<https://www.sparkfun.com/products/12794>)
@@ -74,6 +74,14 @@ Pin Tables
 |--------------|------|
 | Vin          | 3.3V |
 | output       | p20  |
+
+System Schematic
+
+![A diagram of a computer Description automatically generated](media/5ad5d81abf5623c06d20fdc2dc937ff3.png)
+
+Software Flow
+
+![A diagram with text and images Description automatically generated with medium confidence](media/e1f3c550fe6dc4ae37db1ae0ceb56994.png)
 
 ## Source Code
 
@@ -743,4 +751,8 @@ public class WhiteboardMarker : MonoBehaviour
 
 ## Future Improvements
 
-Upon concluding this project. We achieved our main goal of building a “pencil device” with an IMU tracking system of its coordinates; along with the Mbed being able to send the IMU data to the Unity game engine. In the future, we would like to connect the IMU pencil system to Microsoft HoloLens. This will allow the user to fully experience the 3D drawing environment.
+Upon concluding this project. We achieved our main goal of building a “pencil device” with an IMU tracking system of its local orientation. Due to compatibility issues the BNO055 has with certain types of I2C connections, accurate data collection is difficult and as a result, increases the noise in our system. Thus, future work for this project would be to incorporate a more suitable 9-axis IMU that is compatible with the mbed, or in turn, use a microcontroller that uses the same communication protocols as the BNO055.
+
+Further improvements would also be to include Sensor Fusion by implementing a Complementary Filter and an Extended Kalman Filter in the system. These two components would provide the necessary estimations and noise reduction and provide accurate estimates for the orientation, velocity, and displacement of the IMU in 3D space. Specifically, the Complementary Filter would assist in reducing noise and providing the system with accurate orientation data, while the Extended Kalman Filter would use the various hardware elements within the IMU to provide the displacement for the system.
+
+Finally, the final improvement would be to implement the user experience into an AR headset, specifically the Microsoft HoloLens. This would enable the user to experience the drawings in a 3D environment rather than their drawings being cast onto a 2D screen.
