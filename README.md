@@ -59,8 +59,6 @@ Mbed Code
 
 ```
 #include "mbed.h"
-```
-
 /\*
 
 \* mbed Application program for the mbed Nucleo series
@@ -640,6 +638,7 @@ ThisThread::sleep_for(500ms);
 }
 
 \#endif
+```
 
 ```
 
