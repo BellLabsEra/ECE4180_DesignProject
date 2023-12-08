@@ -41,11 +41,10 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 ## Parts List
 
 -   Mbed LPC1768 (<https://www.sparkfun.com/products/retired/9564>)
--   1k Ohm Resistor (<https://www.sparkfun.com/products/14492>)
 -   Adafruit BNO055 IMU (<https://www.adafruit.com/product/2472>)
--   Dual H-Bridge Motor Driver (<https://www.sparkfun.com/products/14450>)
--   DC Barrel Jack Adapter (<https://www.sparkfun.com/products/10811>)
+-   Transistor 2N3904 NPN (<https://www.sparkfun.com/products/521>)
 -   Brushed DC Motor (<https://www.sparkfun.com/products/13302>)
+-   Diode Rectifier (<https://www.sparkfun.com/products/8589>)
 -   2 Push Buttons (<https://www.sparkfun.com/products/97>)
 -   Jumper Wires (<https://www.sparkfun.com/products/12794>)
 
@@ -339,7 +338,6 @@ int main()
     }
 }
 #endif
-
 ```
 
 Unity Code
