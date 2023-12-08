@@ -10,11 +10,17 @@ Watch our presentation and demo:
 
 Presentation: <https://drive.google.com/file/d/14KUnDt1Ti68P850mrDOKhtqP7hBQmZFL/view?usp=drive_link>
 
-![A circuit board with wires Description automatically generated](media/1d371043fbda6c30c2327037dfa4606b.jpeg)Demo: <https://docs.google.com/presentation/d/1ax4yqrgerWUf8rvh5xPlwQ1ZmiABBNkj/edit?usp=sharing&ouid=108049071814918597007&rtpof=true&sd=true>
+Demo: <https://docs.google.com/presentation/d/1ax4yqrgerWUf8rvh5xPlwQ1ZmiABBNkj/edit?usp=sharing&ouid=108049071814918597007&rtpof=true&sd=true>
 
-![A circuit board with wires Description automatically generated](media/62a8862bc4387bb7d62c20c6fab50daf.jpeg)![A circuit board with wires Description automatically generated](media/6e24f4f844255b923b53dc887895c816.jpeg)These are images of our IMU Pencil breadboard from several angles:
+These are images of our IMU Pencil breadboard from several angles:
 
-**![A close-up of a circuit board Description automatically generated](media/2c96ba76a204585b687c79f3a664c58d.jpeg)**
+**![A circuit board with wires Description automatically generated](media/ead43c2eccd1bda9b37e285bcbf580d7.jpeg)**
+
+**![A circuit board with wires Description automatically generated](media/b74ca8f37f3e9d06dd1a483bd2019379.jpeg)**
+
+**![A circuit board with wires Description automatically generated](media/ec8c7f9f53b31b44397ac8d755c32748.jpeg)**
+
+**![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)**
 
 **Table of Contents**
 
