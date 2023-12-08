@@ -18,7 +18,7 @@ These are images of our IMU Pencil breadboard from several angles:
 
 **![A circuit board with wires Description automatically generated](media/b74ca8f37f3e9d06dd1a483bd2019379.jpeg)**
 
-**![A circuit board with wires Description automatically generated](media/ec8c7f9f53b31b44397ac8d755c32748.jpeg)**
+**![A circuit board with wires Description automatically generated](media/ee7bfed211b775deb1aaae06d2278b85.jpeg)**
 
 **![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)**
 
@@ -71,5 +71,4 @@ Unity Code
 
 ## Future Improvements
 
--   Current = 2D drawing
--   Future = 3D drawing
+Upon concluding this project. We achieved our main goal of building a “pencil device” with an IMU tracking system of its coordinates; along with the Mbed being able to send the IMU data to the Unity game engine. In the future, we would like to connect the IMU pencil system to Microsoft HoloLens. This will allow the user to fully experience the 3D drawing environment.

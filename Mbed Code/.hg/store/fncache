@@ -1,0 +1,7 @@
+data/check_revision.cpp.i
+data/TextLCD.lib.i
+data/mbed-os.lib.i
+data/main.cpp.i
+data/mbed_app.json.i
+data/mbed.bld.i
+data/BNO055_fusion.lib.i
