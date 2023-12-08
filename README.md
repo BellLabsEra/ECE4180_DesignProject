@@ -57,11 +57,39 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 
 Mbed Code
 
+```
+#include "mbed.h"
+```
+
+/\*
+
+\* mbed Application program for the mbed Nucleo series
+
+\* BNO055 Intelligent 9-axis absolute orientation sensor
+
+\* by Bosch Sensortec
+
+\*
+
+\* Copyright (c) 2015,'17,'20 Kenji Arai / JH1PJL
+
+\* http://www7b.biglobe.ne.jp/\~kenjia/
+
+\* https://os.mbed.com/users/kenjiArai/
+
+\* Created: March 30th, 2015
+
+\* Revised: August 5th, 2020
+
+\*/
+
 // Include --------------------------------------------------------------------
 
 \#include "mbed.h"
 
 \#include "BNO055.h"
+
+//\#include "TextLCD.h"
 
 // Definition -----------------------------------------------------------------
 
@@ -265,6 +293,22 @@ printf(" If you will give up, hit any key.\\r\\n");
 
 t.stop();
 
+// lcd
+
+// lcd.locate(0, 0); // 1st line top
+
+// 12345678
+
+// lcd.printf(" BNO055 ");
+
+// lcd.locate(0, 1); // 2nd line top
+
+// 12345678
+
+// lcd.puts(" JH1PJL ");
+
+// lcd.setContrast(0x14);
+
 while (true) {
 
 d = imu.read_calib_status();
@@ -291,6 +335,8 @@ break;
 
 }
 
+// ThisThread::sleep_for(1s);
+
 }
 
 if (imu.read_calib_status() == 0xff) {
@@ -315,17 +361,127 @@ uint8_t ser_buf[4];
 
 imu.set_mounting_position(MT_P6);
 
+// pwr_onoff = 1;
+
+// printf("\\r\\n\\r\\nIf pc terminal soft is ready, please hit any key!\\r\\n");
+
+// while (pc.readable() == 0) {;}
+
+// printf(
+
+// "Bosch Sensortec BNO055 test program on " \__DATE_\_ "/" \__TIME_\_ "\\r\\n"
+
+// );
+
+// Is BNO055 avairable?
+
+// if (imu.chip_ready() == 0) {
+
+// do {
+
+// printf("Bosch BNO055 is NOT avirable!!\\r\\n Reset\\r\\n");
+
+// pwr_onoff = 0; // Power off
+
+// ThisThread::sleep_for(100ms);
+
+// pwr_onoff = 1; // Power on
+
+// ThisThread::sleep_for(20ms);
+
+// } while(imu.reset());
+
+// }
+
+// printf("Bosch BNO055 is available now!!\\r\\n");
+
+// printf("AXIS_REMAP_CONFIG:0x%02x, AXIS_REMAP_SIGN:0x%02x\\r\\n",
+
+// imu.read_reg0(BNO055_AXIS_MAP_CONFIG),
+
+// imu.read_reg0(BNO055_AXIS_MAP_SIGN)
+
+// );
+
+// imu.read_id_inf(&bno055_id_inf);
+
+// printf("CHIP ID:0x%02x, ACC ID:0x%02x, MAG ID:0x%02x, GYR ID:0x%02x, ",
+
+// bno055_id_inf.chip_id, bno055_id_inf.acc_id,
+
+// bno055_id_inf.mag_id, bno055_id_inf.gyr_id
+
+// );
+
+// printf("SW REV:0x%04x, BL REV:0x%02x\\r\\n",
+
+// bno055_id_inf.sw_rev_id, bno055_id_inf.bootldr_rev_id);
+
+// while (pc.readable() == 1) {
+
+// pc.read(ser_buf, 1);
+
+// }
+
+// printf("If you would like to calibrate the BNO055,");
+
+// printf(" please hit 'y' (No: any other key)\\r\\n");
+
+// while (pc.readable() == 0) {;}
+
+// pc.read(ser_buf, 1);
+
+// uint8_t c = ser_buf[0];
+
+// if (c == 'y') {
+
 bno055_calbration();
+
+// }
+
+// printf("[E]:Euler Angles[deg],[Q]:Quaternion[],[L]:Linear accel[m/s\*s],");
+
+// printf("[G]:Gravity vector[m/s\*s],[T]:Chip temperature,Acc,Gyr[degC]");
+
+// printf(",[S]:Status,[M]:time[mS]\\r\\n");
 
 t.start();
 
 while(true) {
+
+// imu.get_Euler_Angles(&euler_angles);
+
+// printf("Y,%+6.1f,R,%+6.1f,P,%+6.1f\\n",
+
+// euler_angles.h, euler_angles.r, euler_angles.p);
 
 imu.get_quaternion(&quaternion);
 
 printf("%d,%d,%d,%d\\n",
 
 quaternion.x, quaternion.y, quaternion.z, quaternion.w);
+
+// imu.get_linear_accel(&linear_acc);
+
+// printf("%+6.1f,%+6.1f\\n",
+
+// linear_acc.x, linear_acc.y);
+
+// imu.get_gravity(&gravity);
+
+// printf("%+6.1f,%+6.1f\\n",
+
+// gravity.x, gravity.y);
+
+// imu.get_chip_temperature(&chip_temp);
+
+// printf("[T],%+d,%+d,",
+
+// chip_temp.acc_chip, chip_temp.gyr_chip);
+
+// printf("[S],0x%x,[M],%d\\r\\n",
+
+// imu.read_calib_status(), (uint32_t)t.elapsed_time().count());
 
 }
 
@@ -349,7 +505,7 @@ printf(
 
 );
 
-// Is BNO055 available?
+// Is BNO055 avairable?
 
 if (imu.chip_ready() == 0) {
 
@@ -485,7 +641,16 @@ ThisThread::sleep_for(500ms);
 
 \#endif
 
+```
+
+```
+
 Unity Code
+
+```
+#include "mbed.h"
+…
+```
 
 ## Future Improvements
 
