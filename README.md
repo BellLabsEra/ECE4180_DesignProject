@@ -14,13 +14,13 @@ Demo: <https://docs.google.com/presentation/d/1ax4yqrgerWUf8rvh5xPlwQ1ZmiABBNkj/
 
 These are images of our IMU Pencil breadboard from several angles:
 
-**![A circuit board with wires Description automatically generated](media/ead43c2eccd1bda9b37e285bcbf580d7.jpeg)**
+![A circuit board with wires Description automatically generated](media/5a570f5d91072e769c2a82db5fc428da.jpeg)
 
-**![A circuit board with wires Description automatically generated](media/b74ca8f37f3e9d06dd1a483bd2019379.jpeg)**
+![A circuit board with wires Description automatically generated](media/69a4be68e8c081d304c2610b43978c13.jpeg)
 
-**![A circuit board with wires Description automatically generated](media/ee7bfed211b775deb1aaae06d2278b85.jpeg)**
+![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)
 
-**![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)**
+![A circuit board with wires Description automatically generated](media/ec8c7f9f53b31b44397ac8d755c32748.jpeg)
 
 **Table of Contents**
 
@@ -54,7 +54,7 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 
 ## Source Code
 
-Mbed Code
+**Mbed Code**
 
 ```
 //  Include --------------------------------------------------------------------
@@ -340,11 +340,382 @@ int main()
 #endif
 ```
 
-Unity Code
+**Unity Code**
+
+Rolling Behavior
 
 ```
-#include "mbed.h"
-…
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Ports;
+using UnityEngine;
+
+
+public class RollingBehaviour : MonoBehaviour
+{
+    private static Quaternion rb_quat;
+
+    internal class SerialCommunication : MonoBehaviour
+    {
+
+
+        private Quaternion new_quat = new Quaternion(0, 0, 0, 0);
+        private string receivedString;
+        private float[] recv_rotation = new float[4];
+
+        public SerialPort _serialPort = new SerialPort("COM3", 115200);
+
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            _serialPort.Open();
+            //InvokeRepeating("Serial_Data_Reading", 0f, 0.00f);
+            InvokeRepeating("Serial_Data_Reading", 0f, 0.01f);
+        }
+
+        void OnApplicationQuit()
+        {
+            _serialPort.Close();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            //receivedString = Serial_Data_Reading();
+            Serial_Data_Reading();
+            // Ensures that the IMU is rotating based on local axis and not Earth's
+            //new_quat = Quaternion.Inverse(new_quat);
+            //Debug.Log(new_quat.ToString());
+            //rb_quat = Quaternion.Slerp(rb_quat, new_quat, 0.20f);
+            rb_quat = Quaternion.Slerp(rb_quat, Quaternion.Inverse(new_quat), 0.20f);
+
+            //Debug.Log(rb_quat.ToString());
+            //Debug.Log(rb_quat.ToString());
+            //Debug.Log(rb_quat.ToString());
+
+        }
+
+        // Return the values collected by the IMU sent by the mbed
+        // The data will be returned as 
+        void Serial_Data_Reading()
+        {
+            try
+            {
+                receivedString = _serialPort.ReadLine();
+
+                //Debug.Log(receivedString);
+                string[] breakdown = receivedString.Split(',');
+                for (int i = 0; i < breakdown.Length; i++)
+                {
+                    recv_rotation[i] = float.Parse(breakdown[i]);
+                }
+                new_quat.Set(recv_rotation[0], recv_rotation[1], recv_rotation[2], recv_rotation[3]);
+                //Debug.Log(new_quat.ToString());
+            }
+            catch (Exception e)
+            {
+                //Debug.Log(e.Message);
+            }
+        }
+    }
+
+    public float speed = 2.0f;
+
+    //private Vector3 heading;
+    private Vector3 targetForward;
+    private Vector3 up;
+    private Vector3 prev_up;
+
+    //private Vector3 constant_vec = new Vector3(0, 1, 0);
+    //private Vector3 s;
+    //private Vector3 v;
+    //private Vector3 vrot;
+
+    //private double roll;
+    //private double pitch;
+    //private double yaw;
+
+    Rigidbody actual;
+
+    Vector3 move;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        //rb = transform.Find("RotationData").GetComponent<Transform>();
+        gameObject.AddComponent<SerialCommunication>();
+        actual = GetComponent<Rigidbody>();
+      
+        //rb.position = new Vector3(0, 0, 0);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        prev_up = up;
+
+        //Debug.Log(rb_quat.ToString());
+        // x treated as roll
+        //roll = -Math.Atan2(2 * (rb_quat[3] * rb_quat[0] + rb_quat[1] * rb_quat[2]), 1 - 2 * (rb_quat[0] * rb_quat[0] + rb_quat[1] * rb_quat[1]));
+        //pitch = Math.Asin(2 * (rb_quat[3] * rb_quat[1] - rb_quat[2] * rb_quat[0]));
+        //yaw = (-Math.Atan2(2 * (rb_quat[3] * rb_quat[2] + rb_quat[0] * rb_quat[1]), 1 - 2 * (rb_quat[1] * rb_quat[1] + rb_quat[2] * rb_quat[2])) - Math.PI / 2);
+
+        //heading = new Vector3((float)(Math.Cos(yaw) * Math.Cos(pitch)), (float)Math.Sin(pitch), (float)(Math.Sin(yaw) * Math.Cos(pitch)));
+
+        //s = Vector3.Cross(heading, constant_vec);
+        //v = Vector3.Cross(s, heading);
+        //vrot = (((float)Math.Cos(roll) * v) + ((float)Math.Sin(roll) * Vector3.Cross(heading, v)));
+        //Debug.DrawLine(new Vector3(0, 0, 0), vrot, Color.blue);
+        //Debug.DrawLine(new Vector3(0, 0, 0), heading, Color.red);
+        ////Debug.Log("Heading: " + heading.ToString());
+        //Debug.Log("Up: " + vrot.ToString());
+        
+        targetForward = Vector3.Lerp(targetForward, rb_quat * Vector3.forward, 0.2f);
+        up = Vector3.Lerp(up, rb_quat * Vector3.up, 0.2f);
+
+        targetForward.Normalize();
+        up.Normalize();
+
+        Debug.Log(up.ToString());
+        Debug.DrawLine(new Vector3(0,0,0), targetForward, Color.blue);
+        Debug.DrawLine(new Vector3(0, 0, 0), up, Color.red);
+        float distance_between = (prev_up - up).sqrMagnitude;
+        //Debug.Log(distance_between.ToString());
+        //rb.AddForce(0, vrot.y, vrot.z, ForceMode.Impulse);
+        if ((up.y > 0.4 || up.z > 0.4 || up.y < -0.4 || up.z < -0.4) 
+            && (distance_between < 5))
+        {
+            float scaley = 0.025f;
+            float scalez = 0.025f;
+            if (up.y > 0.4 || up.y < -0.4)
+            {
+                scaley = 0.05f;
+            }
+            if (up.z > 0.4 || up.z < -0.4)
+            {
+                scalez = 0.05f;
+            }
+            move = new Vector3(0, up.y * scaley, up.z * scalez);
+            Debug.Log(move.ToString());
+            actual.Move(actual.position + move, actual.rotation);
+            //actual.angularVelocity = Vector2.zero;
+        }
+        else 
+        {
+            //actual.velocity = Vector2.zero;
+
+        }
+        actual.angularVelocity = Vector3.zero;
+
+    }
+}
+```
+
+Camera Follow
+
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraFollow : MonoBehaviour
+{
+    public float smoothness;
+    public Transform targetObject;
+    private Vector3 initalOffset;
+    private Vector3 cameraPosition;
+
+    void Start()
+    {
+        initalOffset = transform.position - targetObject.position;
+    }
+
+    void FixedUpdate()
+    {
+        cameraPosition = targetObject.position + initalOffset;
+        transform.position = Vector3.Lerp(transform.position, cameraPosition, smoothness * Time.fixedDeltaTime);
+    }
+}
+```
+
+Serial Communication
+
+```
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Ports;
+using System.Net;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class SerialConnection : MonoBehaviour
+{
+    #region parameters
+    private SerialPort _serialPort = new SerialPort("COM3", 115200);
+    public string receivedString;
+    private float[] recv_rotation = new float[4];
+
+
+    public Quaternion new_quat;
+    public Rigidbody Cube;
+    #endregion
+    //[field: SerializeField] public Transform RotationData {  get; set; }
+
+    public Quaternion rb_quat;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _serialPort.Open();
+        InvokeRepeating("Serial_Data_Reading", 0f, 0.01f);
+        //InvokeRepeating("Serial_Data_Reading", 0f, 0.1f);
+    }
+
+    void OnApplicationQuit()
+    {
+        _serialPort.Close();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //receivedString = Serial_Data_Reading();
+        Serial_Data_Reading();
+        // Ensures that the IMU is rotating based on local axis and not Earth's
+        //transform.rotation = Quaternion.Inverse(quat);
+        new_quat = Quaternion.Inverse(new_quat);
+        rb_quat = Quaternion.Slerp(rb_quat, new_quat, 0.05f);
+
+    }
+
+    // Return the values collected by the IMU sent by the mbed
+    // The data will be returned as 
+    void Serial_Data_Reading()
+    {
+        try
+        {
+            receivedString = _serialPort.ReadLine();
+            //Debug.Log(receivedString);
+            string[] breakdown = receivedString.Split(',');
+            //recv_rotation = new float[breakdown.Length];
+            for (int i = 0; i < breakdown.Length; i++)
+            {
+                recv_rotation[i] = float.Parse(breakdown[i]);
+            }
+            new_quat.Set(recv_rotation[0], recv_rotation[1], recv_rotation[2], recv_rotation[3]);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+    }
+
+
+}
+```
+
+Whiteboard Marker
+
+```
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class WhiteboardMarker : MonoBehaviour
+{
+    [SerializeField] private Transform _tip; // Get access to tip
+    [SerializeField] private int _penSize = 5;  // set pin adjustable pinsize
+
+    private Renderer _renderer;
+    private Color[] _colors;
+    private float _tipHeight;
+
+    private RaycastHit _touch;
+    private Whiteboard _whiteboard;
+    private Vector2 _touchPos, _lastTouchPos;
+    private bool _touchedLastFrame;
+    private Quaternion _lastTouchRot;
+
+
+    // total number of pixels depending on the gemometry of the render's material
+    // Start is called before the first frame update
+    void Start()
+    {
+        _renderer = _tip.GetComponent<Renderer>();
+        _colors = Enumerable.Repeat(_renderer.material.color, _penSize * _penSize).ToArray();
+        _tipHeight = _tip.localScale.y;
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        Draw();
+    }
+    private void Draw()
+    {
+        // 
+        if (Physics.Raycast(_tip.position, transform.up, out _touch, _tipHeight))
+        {
+            if (_touch.transform.CompareTag("Whiteboard"))
+            {
+                if (_whiteboard == null)
+                {
+                    _whiteboard = _touch.transform.GetComponent<Whiteboard>();
+                }
+
+                _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
+
+                var x = (int)(_touchPos.x * _whiteboard.textureSize.x - (_penSize / 2));
+                var y = (int)(_touchPos.y * _whiteboard.textureSize.y - (_penSize / 2));
+                    
+                // This check will break the program sequence out of the Draw() method
+                // if the maker is out-of-bounds with the whiteboard
+                if (y < 0 || y > _whiteboard.textureSize.y || x < 0 || x > _whiteboard.textureSize.x) return;
+
+                // START drawing
+
+                if (_touchedLastFrame)
+                {
+                    _whiteboard.texture.SetPixels(x, y, _penSize, _penSize, _colors);
+
+                    // set the orginal point that touched the whiteboard
+                    // Percent Coverage 1%  --> 100%
+                    // Coverage between frames 
+                    // Interpolation between frames (fill in the space)
+                    for (float f = 0.01f; f < 1.00f; f += 0.01f)
+                    {
+                        var lerpX = (int)Mathf.Lerp(_lastTouchPos.x, x, f);
+                        var lerpY = (int)Mathf.Lerp(_lastTouchPos.y, y, f);
+
+                        _whiteboard.texture.SetPixels(lerpX, lerpY, _penSize, _penSize, _colors);
+                    }
+
+
+                    transform.rotation = _lastTouchRot;
+
+                    _whiteboard.texture.Apply();
+                }
+                // keep track of the last touched rotation of the marker
+                // simulates tactile response of marker touching a whiteboard
+                _lastTouchPos = new Vector2(x, y);
+                _lastTouchRot = transform.rotation;
+                _touchedLastFrame = true;
+                return;
+            }
+        }
+        // Set the last touch rotation
+        // didn't go through if-statements
+        // unset the whiteboard
+        // unset the touch last frame
+        _whiteboard = null;
+        _touchedLastFrame = false;
+    }
+}
 ```
 
 ## Future Improvements
