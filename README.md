@@ -8,9 +8,9 @@ Team Members: Elio Zebinato, Christopher Semali, Mae Frank
 
 Watch our presentation and demo:
 
-Presentation:
+Presentation: <https://drive.google.com/file/d/14KUnDt1Ti68P850mrDOKhtqP7hBQmZFL/view?usp=drive_link>
 
-Demo:
+Demo: <https://docs.google.com/presentation/d/1ax4yqrgerWUf8rvh5xPlwQ1ZmiABBNkj/edit?usp=sharing&ouid=108049071814918597007&rtpof=true&sd=true>
 
 These are images of our IMU Pencil breadboard:
 
