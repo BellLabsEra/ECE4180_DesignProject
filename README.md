@@ -83,7 +83,7 @@ System Schematics
 
 Software Flow
 
-![A diagram with text and images Description automatically generated with medium confidence](media/e1f3c550fe6dc4ae37db1ae0ceb56994.png)
+![A diagram with text and images Description automatically generated with medium confidence](media/81edf84a353e998fffbf7bf6a9acbf4d.png)
 
 ## Source Code
 
