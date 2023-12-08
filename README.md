@@ -58,18 +58,6 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 Mbed Code
 
 ```
-/*
- * mbed Application program for the mbed Nucleo series
- *  BNO055 Intelligent 9-axis absolute orientation sensor
- *  by Bosch Sensortec
- *
- * Copyright (c) 2015,'17,'20 Kenji Arai / JH1PJL
- *  http://www7b.biglobe.ne.jp/~kenjia/
- *  https://os.mbed.com/users/kenjiArai/
- *      Created: March     30th, 2015
- *      Revised: August     5th, 2020
- */
-
 //  Include --------------------------------------------------------------------
 #include    "mbed.h"
 #include    "BNO055.h"
