@@ -14,13 +14,13 @@ Demo: <https://docs.google.com/presentation/d/1ax4yqrgerWUf8rvh5xPlwQ1ZmiABBNkj/
 
 These are images of our IMU Pencil breadboard from several angles:
 
-**![A circuit board with wires Description automatically generated](media/ead43c2eccd1bda9b37e285bcbf580d7.jpeg)**
+![A circuit board with wires Description automatically generated](media/5a570f5d91072e769c2a82db5fc428da.jpeg)
 
-**![A circuit board with wires Description automatically generated](media/b74ca8f37f3e9d06dd1a483bd2019379.jpeg)**
+![A circuit board with wires Description automatically generated](media/69a4be68e8c081d304c2610b43978c13.jpeg)
 
-**![A circuit board with wires Description automatically generated](media/ee7bfed211b775deb1aaae06d2278b85.jpeg)**
+![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)
 
-**![A close-up of a circuit board Description automatically generated](media/425103712010be2fabcb1e60bc61da8f.jpeg)**
+![A circuit board with wires Description automatically generated](media/ec8c7f9f53b31b44397ac8d755c32748.jpeg)
 
 **Table of Contents**
 
