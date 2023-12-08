@@ -50,30 +50,7 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 
 ## Schematic and Diagrams
 
-Pin Tables
-
-| IMU | Mbed |
-|-----|------|
-| Vin | 3.3V |
-| GND | GND  |
-| SDA | p9   |
-| SCL | p10  |
-
-| Motor | Mbed |
-|-------|------|
-| Vin   | 3.3V |
-| GND   | GND  |
-| PWM   | p21  |
-
-| Pushbutton 1 | Mbed |
-|--------------|------|
-| Vin          | 3.3V |
-| output       | p19  |
-
-| Pushbutton 2 | Mbed |
-|--------------|------|
-| Vin          | 3.3V |
-| output       | p20  |
+\*\*insert System Architecture and Software Flow diagrams\*\*
 
 ## Source Code
 
