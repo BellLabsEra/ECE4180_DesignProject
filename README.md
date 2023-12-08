@@ -640,10 +640,6 @@ ThisThread::sleep_for(500ms);
 \#endif
 ```
 
-```
-
-```
-
 Unity Code
 
 ```
