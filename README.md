@@ -54,7 +54,7 @@ Our IMU pencil is a new Mbed hardware I/O interface and developing a Unity VS C\
 
 ## Source Code
 
-Mbed Code
+**Mbed Code**
 
 ```
 //  Include --------------------------------------------------------------------
@@ -340,8 +340,7 @@ int main()
 #endif
 ```
 
-Unity Code
-Rolling Behavior
+**Unity Code** Rolling Behavior
 
 ```
 using System;
@@ -511,7 +510,9 @@ public class RollingBehaviour : MonoBehaviour
     }
 }
 ```
+
 Camera Follow
+
 ```
 using System.Collections;
 using System.Collections.Generic;
@@ -535,9 +536,10 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, cameraPosition, smoothness * Time.fixedDeltaTime);
     }
 }
-
 ```
+
 Serial Communication
+
 ```
 using System;
 using System.Collections;
@@ -612,7 +614,9 @@ public class SerialConnection : MonoBehaviour
 
 }
 ```
+
 Whiteboard Marker
+
 ```
 using System.Collections;
 using System.Collections.Generic;
