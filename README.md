@@ -1,4 +1,6 @@
-# ECE 4180 Final Design Project – IMU Pencil
+# ECE 4180 Final Design Project – IMU Pencil (called 3D Penseli)
+
+"Penseli" is "Pencil" translated from Swahili to English
 
 Repo of our final project in ECE 4180, for Fall 2023
 
