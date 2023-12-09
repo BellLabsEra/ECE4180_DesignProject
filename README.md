@@ -28,7 +28,7 @@ These are images of our IMU Pencil breadboard from several angles:
 
 [Parts List](#parts-list)
 
-[Schematic and Diagrams](#schematic-and-diagrams)
+[Schematics and Diagrams](#schematics-and-diagrams)
 
 [Source Code](#source-code)
 
@@ -48,7 +48,7 @@ This project is a 3D space pencil that uses a 9-axis IMU to collect orientation 
 -   2 Push Buttons (<https://www.sparkfun.com/products/97>)
 -   Jumper Wires (<https://www.sparkfun.com/products/12794>)
 
-## Schematic and Diagrams
+## Schematics and Diagrams
 
 Pin Tables
 
