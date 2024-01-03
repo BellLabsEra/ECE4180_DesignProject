@@ -16,6 +16,8 @@ Demo: <https://drive.google.com/file/d/14KUnDt1Ti68P850mrDOKhtqP7hBQmZFL/view?us
 
 These are images of our IMU Pencil breadboard from several angles:
 
+![20231213_193258](https://github.com/BellLabsEra/ECE4180_DesignProject/assets/94195261/0d555b02-262a-40d7-9213-c8d986368cd0)
+
 ![A circuit board with wires Description automatically generated](media/5a570f5d91072e769c2a82db5fc428da.jpeg)
 
 ![A circuit board with wires Description automatically generated](media/69a4be68e8c081d304c2610b43978c13.jpeg)
